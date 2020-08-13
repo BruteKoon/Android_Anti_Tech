@@ -39,10 +39,7 @@ public class Const {
             "/system/xbin",
             "/vendor/bin",
             "/sbin",
-            "/etc",
-            //"/sys",
-            //"/proc",
-            //"/dev"
+            "/etc"
     };
 
     public static final String[] suPaths ={
