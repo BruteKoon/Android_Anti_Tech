@@ -273,4 +273,11 @@ public class Checker {
         }
     }
 
+
+    //check the Google Installer ("com.android.vending" is google installer)
+    public static boolean verifyGoogleInstaller(Context context){
+        final String installer = context.getPackageManager().getInstallerPackageName(context.getPackageName());
+        return installer != null && installer.startsWith("com.android.vending");
+    }
+
 }
