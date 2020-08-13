@@ -280,4 +280,25 @@ public class Checker {
         return installer != null && installer.startsWith("com.android.vending");
     }
 
+
+    public boolean Check_For_Emulator(){
+        return true;
+    }
+
+    public boolean Check_For_Emulator_Extend(){
+        return true;
+    }
+
+
+    public boolean Check_For_Hack(){
+        return true;
+    }
+
+    public boolean Check_For_AttackTool(){
+        return true;
+    }
+
+
+
+
 }
