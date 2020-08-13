@@ -13,14 +13,17 @@
         android:screenOrientation="landscape"
         android:supportsRtl="true"
         android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
-        <activity android:name=".LoginActivity">
+        <activity android:name=".LoginActivity"
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".GameActivity">
+        <activity android:name=".RegisterActivity"
+            android:theme="@style/AppTheme"/>
+        <activity android:name=".MainActivity"
+            android:theme="@style/AppTheme">
         </activity>
     </application>
 
