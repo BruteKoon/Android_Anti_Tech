@@ -340,11 +340,14 @@ public class Checker {
     }
 
 
-    public boolean Check_For_AttackTool(){
-        return true;
+    public boolean Check_For_AttackTools(String[] additionalAttackTools) {
+        // Create a list of package names to iterate over from constants any others provided
+        ArrayList<String> packages = new ArrayList<>();
+        packages.addAll(Arrays.asList(Const.AttackTools));
+        if (additionalAttackTools != null && additionalAttackTools.length > 0) {
+            packages.addAll(Arrays.asList(additionalAttackTools));
+        }
+        return isAnyPackageFromListInstalled(packages);
     }
-
-
-
 
 }

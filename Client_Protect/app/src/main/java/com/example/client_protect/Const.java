@@ -47,6 +47,10 @@ public class Const {
             "idv.aqua.bulldog"
     };
 
+    public static final String[] AttackTools = {
+            "org.cheatengine.cegui"
+    };
+
     public static final String[] pathsThatShouldNotBeWritable = {
             "/system",
             "/system/bin",
