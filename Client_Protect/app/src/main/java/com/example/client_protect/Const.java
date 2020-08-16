@@ -35,7 +35,16 @@ public class Const {
     public static final String[] SpeedHacks = {
             "com.x0.strai.frep",
             "com.cygery.repetitouch.pro",
-            "com.cygery.repetitouch.free"
+            "com.cygery.repetitouch.free",
+            "com.prohiro.macro",
+            "jp.co.taosoftware.android.packetcapture",
+            "com.frapeti.androidbotmaker",
+            "com.arlsoft.macrodroid",
+            "org.sbtools.gamespeed",
+            "com.cih.game_cih",
+            "com.cih.gamecih2",
+            "com.cnn.g",
+            "idv.aqua.bulldog"
     };
 
     public static final String[] pathsThatShouldNotBeWritable = {

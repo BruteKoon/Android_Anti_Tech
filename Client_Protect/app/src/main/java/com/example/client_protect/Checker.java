@@ -117,7 +117,6 @@ public class Checker {
         boolean result = false;
 
         PackageManager pm = mContext.getPackageManager();
-
         for (String packageName : packages) {
             try {
                 // Root app detected
@@ -127,7 +126,6 @@ public class Checker {
                 // Exception thrown, package is not installed into the system
             }
         }
-
         return result;
     }
 
@@ -178,7 +176,6 @@ public class Checker {
         }
         return result;
     }
-
 
     /**
      *  Exec "getprop" command
@@ -339,10 +336,9 @@ public class Checker {
         if (additionalSpeedHacks!=null && additionalSpeedHacks.length>0){
             packages.addAll(Arrays.asList(additionalSpeedHacks));
         }
-
         return isAnyPackageFromListInstalled(packages);
-
     }
+
 
     public boolean Check_For_AttackTool(){
         return true;
