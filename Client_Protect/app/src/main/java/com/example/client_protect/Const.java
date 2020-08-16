@@ -32,6 +32,12 @@ public class Const {
             "com.chelpus.luckypatcher"
     };
 
+    public static final String[] SpeedHacks = {
+            "com.x0.strai.frep",
+            "com.cygery.repetitouch.pro",
+            "com.cygery.repetitouch.free"
+    };
+
     public static final String[] pathsThatShouldNotBeWritable = {
             "/system",
             "/system/bin",

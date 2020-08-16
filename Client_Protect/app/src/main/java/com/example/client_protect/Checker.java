@@ -3,6 +3,8 @@ package com.example.client_protect;
 import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.text.TextUtils;
@@ -320,17 +322,26 @@ public class Checker {
     }
 
 
-    //
     public boolean Check_For_Emulator_Extend(){
         return true;
     }
 
 
+    /*
+     * Using the PackageManager, check for a list of well known apps that Speed Hacks. @link {Const.SpeedHacks}
+     * @param additionalSpeedHacks - array of additional packagenames to search for
+     * @return true if one of the apps it's installed
+     */
+    public boolean Check_For_Hack(String[] additionalSpeedHacks){
+        // Create a list of package names to iterate over from constants any others provided
+        ArrayList<String> packages = new ArrayList<>();
+        packages.addAll(Arrays.asList(Const.SpeedHacks));
+        if (additionalSpeedHacks!=null && additionalSpeedHacks.length>0){
+            packages.addAll(Arrays.asList(additionalSpeedHacks));
+        }
 
+        return isAnyPackageFromListInstalled(packages);
 
-
-    public boolean Check_For_Hack(){
-        return true;
     }
 
     public boolean Check_For_AttackTool(){

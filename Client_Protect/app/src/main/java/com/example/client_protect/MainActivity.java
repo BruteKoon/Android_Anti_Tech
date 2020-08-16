@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         button_1.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View view) {
-                boolean result = checker.Check_For_Emulator_Extend();
+                boolean result = checker.Check_RootManagementApps(null);
                 logview.setText(String.valueOf(result));
             }
         });
