@@ -1,15 +1,28 @@
 package com.example.client_protect;
 
+import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.os.Build;
+import android.text.TextUtils;
+import android.util.Log;
+
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.net.SocketException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -281,13 +294,39 @@ public class Checker {
     }
 
 
+    //chekc the Emulator (Using API) (true : emulator / false : no emulator)
     public boolean Check_For_Emulator(){
-        return true;
+        return (Build.BRAND.startsWith("generic") && Build.DEVICE.startsWith("generic"))
+                || Build.FINGERPRINT.startsWith("generic")
+                || Build.FINGERPRINT.startsWith("unknown")
+                || Build.HARDWARE.contains("goldfish")
+                || Build.HARDWARE.contains("ranchu")
+                || Build.MODEL.contains("google_sdk")
+                || Build.MODEL.contains("Emulator")
+                || Build.MODEL.contains("Android SDK built for x86")
+                || Build.MANUFACTURER.contains("Genymotion")
+                || Build.PRODUCT.contains("sdk_google")
+                || Build.PRODUCT.contains("google_sdk")
+                || Build.PRODUCT.contains("sdk")
+                || Build.PRODUCT.contains("sdk_x86")
+                || Build.PRODUCT.contains("vbox86p")
+                || Build.PRODUCT.contains("emulator")
+                || Build.PRODUCT.contains("simulator")
+                || Build.BOARD.toLowerCase().contains("nox")
+                || Build.BOOTLOADER.toLowerCase().contains("nox")
+                || Build.HARDWARE.toLowerCase().contains("nox")
+                || Build.PRODUCT.toLowerCase().contains("nox")
+                || Build.SERIAL.toLowerCase().contains("nox");
     }
 
+
+    //
     public boolean Check_For_Emulator_Extend(){
         return true;
     }
+
+
+
 
 
     public boolean Check_For_Hack(){
