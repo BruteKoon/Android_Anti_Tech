@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Context mContext = null;
+        Context mContext = this;
 
         // Make RootChecker Object
         final Checker checker = new Checker(mContext);
@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         button_1.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View view) {
-                boolean result = checker.Check_RootManagementApps(null);
+                boolean result = checker.Check_For_Hack(null);
                 logview.setText(String.valueOf(result));
             }
         });
