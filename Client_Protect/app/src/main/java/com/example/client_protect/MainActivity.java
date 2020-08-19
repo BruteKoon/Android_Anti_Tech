@@ -10,6 +10,9 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
+    static {
+        System.loadLibrary("hello");
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
