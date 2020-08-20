@@ -12,7 +12,8 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    public native String stringFromJNI();
+    public native String NativeString();
+    public native void NativeShowProcess();
 
     static {
         System.loadLibrary("native-lib");
@@ -36,7 +37,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 boolean result = checker.Check_For_Hack(null);
-                logview.setText(stringFromJNI());
+                NativeShowProcess();
+                logview.setText(NativeString());
             }
         });
 
