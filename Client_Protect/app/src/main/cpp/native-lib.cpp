@@ -7,3 +7,4 @@ Java_com_example_client_1protect_MainActivity_stringFromJNI(JNIEnv *env, jobject
     std::string hello = "Hello from C++";
     return env->NewStringUTF(hello.c_str());
 }
+
