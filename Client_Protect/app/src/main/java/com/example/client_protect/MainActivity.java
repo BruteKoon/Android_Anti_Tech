@@ -8,11 +8,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+
+
 public class MainActivity extends AppCompatActivity {
 
+    public native String stringFromJNI();
+
     static {
-        System.loadLibrary("hello");
+        System.loadLibrary("native-lib");
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 boolean result = checker.Check_For_Hack(null);
-                logview.setText(String.valueOf(result));
+                logview.setText(stringFromJNI());
             }
         });
 
