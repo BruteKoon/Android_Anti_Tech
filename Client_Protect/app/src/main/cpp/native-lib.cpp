@@ -24,8 +24,6 @@ Java_com_example_client_1protect_MainActivity_NativeShowProcess(JNIEnv *env, job
     char tempPath[256];
     printf("Processes Info\n");
     dir = opendir("/proc");   //  /proc이란 디렉토리 스트름이 대한 포인터가 반환되었습니다.
-    printf("sukhoon sukhoon sukhoon");
-
 
     while ((entry = readdir(dir)) != NULL) {   //   /proc에 존재하는 파일들을 차례대로 읽습니다.
         lstat(entry->d_name, &fileStat);          // DIR*가 가리키는 파일의 state 정보를 가져온다.
@@ -52,3 +50,5 @@ void getCmdLine(char *file, char *buf) {
     fgets(buf, 256, srcFp);
     fclose(srcFp);
 }
+
+
