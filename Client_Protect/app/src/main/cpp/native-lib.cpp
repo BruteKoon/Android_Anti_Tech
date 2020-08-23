@@ -15,7 +15,7 @@ Java_com_example_client_1protect_MainActivity_NativeString(JNIEnv *env, jobject 
 
 extern "C"
 JNIEXPORT void JNICALL
-Java_com_example_client_1protect_MainActivity_NativeShowProcess(JNIEnv *env, jobject thiz) {
+Java_com_example_client_1protect_MainActivity_NativeFrontShowProcess(JNIEnv *env, jobject thiz) {
     DIR *dir;                       //  /proc/pid/ 를 가리킬 DIR* 변수
     struct dirent *entry;        // 각 파일의 inode를 통해 파일을 선택할 dirent 구조체
     struct stat fileStat;          // 파일의 정보를 담는 구조체
@@ -29,7 +29,9 @@ Java_com_example_client_1protect_MainActivity_NativeShowProcess(JNIEnv *env, job
         lstat(entry->d_name, &fileStat);          // DIR*가 가리키는 파일의 state 정보를 가져온다.
         if (!S_ISDIR(fileStat.st_mode))            // is dir? 디렉토리인지 확인한다.
             continue;                                    // 프로세스는 /proc에 자신의 pid로 디렉토리만드는 점을 안다면 이해하실거라 생각합니다.
+        __android_log_print(ANDROID_LOG_DEBUG, "LOG_TAG", "\"SUKHOON %s\\n\" ", entry->d_name);
         pid = atoi(entry->d_name);          // 프로세스(디렉토리)인것을 확인하면, 숫자로 반환한다.
+        __android_log_print(ANDROID_LOG_DEBUG, "LOG_TAG", "\"SUKHOON %d\\n\" ", pid);
         if (pid <= 0) continue;                       // 숫자가 아니라면 다시 continue;
         sprintf(tempPath, "/proc/%d/cmdline", pid); // cmdline :: 프로세스 이름이 적힌파일
         getCmdLine(tempPath, cmdLine);     // /proc/pid/cmdline에서 프로세스의 이름을
