@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 boolean result = checker.Check_For_Hack(null);
-                boolean a = DebuggingPortCheck();
+                boolean a = checker.Check_IsDebugger();
                 if(a==false){
                     logview.setText("False");
                 }

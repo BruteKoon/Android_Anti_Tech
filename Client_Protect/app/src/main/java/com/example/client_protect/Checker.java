@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -337,6 +338,18 @@ public class Checker {
             packages.addAll(Arrays.asList(additionalAttackTools));
         }
         return isAnyPackageFromListInstalled(packages);
+    }
+
+    public boolean Check_IsDebugger(){
+        boolean Isdebugger = false;
+        if(android.os.Debug.isDebuggerConnected()){
+            Toast.makeText(mContext, "Debug from vm",Toast.LENGTH_LONG).show();
+            Isdebugger = true;
+        }
+        else{
+            Toast.makeText(mContext, "Hello from vm",Toast.LENGTH_LONG).show();
+        }
+        return Isdebugger;
     }
 
 
