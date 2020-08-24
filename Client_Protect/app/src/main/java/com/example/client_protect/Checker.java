@@ -343,11 +343,11 @@ public class Checker {
     public boolean Check_IsDebugger(){
         boolean Isdebugger = false;
         if(android.os.Debug.isDebuggerConnected()){
-            Toast.makeText(mContext, "Debug from vm",Toast.LENGTH_LONG).show();
+            Toast.makeText(mContext, "Debugger Detected!!!",Toast.LENGTH_LONG).show();
             Isdebugger = true;
         }
         else{
-            Toast.makeText(mContext, "Hello from vm",Toast.LENGTH_LONG).show();
+            Toast.makeText(mContext, "Not Detected",Toast.LENGTH_LONG).show();
         }
         return Isdebugger;
     }
