@@ -12,6 +12,7 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <netdb.h>
+#include <sys/ptrace.h>
 
 
 extern "C"
@@ -194,4 +195,27 @@ Java_com_example_client_1protect_MainActivity_DebuggingPortCheck(JNIEnv *env, jo
     }
     close(sockfd);
     return port_active;
+}
+
+
+/**
+ *  Detection using Ptrace
+ *  : each process in Linux can be run in one process at the same time, APP can preempt the pit with its own ptrace method.
+ *
+ *   *   return : True (debugger detected)
+ *           false ( not detected)
+ */
+
+extern "C"
+JNIEXPORT jboolean JNICALL
+Java_com_example_client_1protect_MainActivity_PtraceCheck(JNIEnv *env, jobject thiz) {
+    // TODO: implement PtraceCheck()
+    int check = ptrace(PTRACE_TRACEME,0,0,0);
+    bool detected = false;
+
+    if(check != 0){
+        detected = true;
+    }
+
+    return detected;
 }
