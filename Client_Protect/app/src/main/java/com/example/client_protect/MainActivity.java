@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 
 
+
 public class MainActivity extends AppCompatActivity {
 
     public native String NativeString();
@@ -23,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Context mContext = this;
+        final Context mContext = this;
 
         // Make RootChecker Object
         final Checker checker = new Checker(mContext);
@@ -37,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 boolean result = checker.Check_For_Hack(null);
-                PsCommand();
+
                 logview.setText(NativeString());
             }
         });

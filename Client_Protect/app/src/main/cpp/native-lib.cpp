@@ -25,11 +25,17 @@ Java_com_example_client_1protect_MainActivity_PsCommand(JNIEnv *env, jobject thi
 
     pid = fork();
 
+    if (pid == -1)
+    {
+        perror("fork");
+        exit(1);
+    }
+
     if(pid == 0){
         dup2 (fd[1], STDOUT_FILENO);
         close(fd[0]);
         close(fd[1]);
-        execl("/system/bin/ps", "/system/bin/ps", NULL, (char *)0);
+        execl("/system/bin/ps", "/system/bin/ps", "-ef", (char *)0);
 
     }
     else{
@@ -43,4 +49,6 @@ Java_com_example_client_1protect_MainActivity_PsCommand(JNIEnv *env, jobject thi
     }
 
 
+
 }
+

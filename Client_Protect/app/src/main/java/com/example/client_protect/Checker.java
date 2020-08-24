@@ -1,36 +1,25 @@
 package com.example.client_protect;
 
-import android.Manifest;
-import android.app.Activity;
+import android.app.ActivityManager;
 import android.content.Context;
-import android.content.Intent;
-import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.os.Build;
-import android.text.TextUtils;
 import android.util.Log;
-
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.InetAddress;
-import java.net.NetworkInterface;
-import java.net.SocketException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
+import static android.content.Context.ACTIVITY_SERVICE;
 import static com.example.client_protect.Const.BINARY_SU;
 
 public class Checker {
@@ -349,5 +338,7 @@ public class Checker {
         }
         return isAnyPackageFromListInstalled(packages);
     }
+
+
 
 }
