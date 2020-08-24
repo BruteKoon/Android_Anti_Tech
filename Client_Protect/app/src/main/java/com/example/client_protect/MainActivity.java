@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     public native String NativeString();
     public native void PsCommand();
     public native boolean TimeCheck();
+    public native boolean TracerPidCheck();
 
     static {
         System.loadLibrary("native-lib");

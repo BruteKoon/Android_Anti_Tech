@@ -83,3 +83,9 @@ Java_com_example_client_1protect_MainActivity_TimeCheck(JNIEnv *env, jobject thi
     return detected;
 }
 
+extern "C"
+JNIEXPORT jboolean JNICALL
+Java_com_example_client_1protect_MainActivity_TracerPidCheck(JNIEnv *env, jobject thiz) {
+    // TODO: implement TracerPidCheck()
+
+}
