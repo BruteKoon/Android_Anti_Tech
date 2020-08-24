@@ -52,3 +52,34 @@ Java_com_example_client_1protect_MainActivity_PsCommand(JNIEnv *env, jobject thi
 
 }
 
+
+/**
+ *   Time-based detection
+ *   : If the debugger stops the flow of execution to analyze this code execution, it takes longer than usual.
+ *
+ *   retur : True (longer than usual / debugger detected)
+ *           false ( not detected)
+ */
+
+extern "C"
+JNIEXPORT jboolean JNICALL
+Java_com_example_client_1protect_MainActivity_TimeCheck(JNIEnv *env, jobject thiz) {
+    // TODO: implement TimeCheck()
+    long start, end;
+    bool detected = false;
+    start = clock();
+
+    /***
+     *  Code Logic
+     *
+     */
+
+    end = clock();
+    if(end-start > 10000){
+        std::string Detect = "Debug from Time";
+        __android_log_print(ANDROID_LOG_INFO,"SUKHOON","%s",Detect.c_str());
+        detected = true;
+    }
+    return detected;
+}
+

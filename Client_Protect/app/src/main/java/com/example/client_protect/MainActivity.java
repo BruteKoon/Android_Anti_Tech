@@ -8,13 +8,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-
+import java.sql.Time;
 
 
 public class MainActivity extends AppCompatActivity {
 
     public native String NativeString();
     public native void PsCommand();
+    public native boolean TimeCheck();
 
     static {
         System.loadLibrary("native-lib");
@@ -38,8 +39,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 boolean result = checker.Check_For_Hack(null);
+                boolean a = TimeCheck();
+                if(a==false){
+                    logview.setText("False");
+                }
+                else{
+                    logview.setText("True");
+                }
 
-                logview.setText(NativeString());
             }
         });
 
