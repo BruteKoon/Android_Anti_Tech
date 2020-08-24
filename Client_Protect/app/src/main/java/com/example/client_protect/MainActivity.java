@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     public native void PsCommand();
     public native boolean TimeCheck();
     public native boolean TracerPidCheck();
+    public native boolean DebuggingPortCheck();
 
     static {
         System.loadLibrary("native-lib");
@@ -40,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 boolean result = checker.Check_For_Hack(null);
-                boolean a = TimeCheck();
+                boolean a = DebuggingPortCheck();
                 if(a==false){
                     logview.setText("False");
                 }

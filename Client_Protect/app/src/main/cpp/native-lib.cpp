@@ -6,9 +6,12 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
-#include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+#include <sstream>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <netdb.h>
 
 
 extern "C"
@@ -140,5 +143,55 @@ Java_com_example_client_1protect_MainActivity_TracerPidCheck(JNIEnv *env, jobjec
     }
     close(fd);
 
-    return detected
+    return detected;
+}
+
+
+/**
+ *  Detect via Debugging Port(23946)
+ *  : check whether we are using port 23946, which seems to be commonly used for debugging
+ *
+ *   return : True (debuggign port active)
+ *           false (debuggign port closed)
+ */
+extern "C"
+JNIEXPORT jboolean JNICALL
+Java_com_example_client_1protect_MainActivity_DebuggingPortCheck(JNIEnv *env, jobject thiz) {
+    // TODO: implement DebuggingPortCheck()
+    int port_num = 33971;//23946; // default debugging port
+    char *hostname = "localhost";
+
+    bool port_active = false;
+    int sockfd;
+    struct sockaddr_in serv_addr;
+    struct hostent *server;
+
+    sockfd = socket(AF_INET, SOCK_STREAM, 0);
+    if (sockfd <0){
+        __android_log_print(ANDROID_LOG_INFO,"SUKHOON","%s","ERROR");
+        exit(0);
+    }
+
+    server = gethostbyname(hostname);
+
+    if (server == NULL){
+        __android_log_print(ANDROID_LOG_INFO,"SUKHOON","%s","no such host\n");
+        exit(0);
+    }
+
+    bzero(&serv_addr, sizeof(serv_addr));
+    serv_addr.sin_family = AF_INET;
+    bcopy((char *)server->h_addr,
+          (char *)&serv_addr.sin_addr.s_addr,
+          server->h_length);
+
+    serv_addr.sin_port = htons(port_num);
+    if (connect(sockfd,(struct sockaddr *) &serv_addr,sizeof(serv_addr)) < 0) {
+        __android_log_print(ANDROID_LOG_INFO,"SUKHOON","%s","port is closed\n");
+    } else {
+        __android_log_print(ANDROID_LOG_INFO,"SUKHOON","%s","port is Active\n");
+        port_active = true;
+    }
+    close(sockfd);
+    return port_active;
 }
