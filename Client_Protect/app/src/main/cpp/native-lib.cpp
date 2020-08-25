@@ -203,7 +203,7 @@ Java_com_example_client_1protect_MainActivity_DebuggingPortCheck(JNIEnv *env, jo
  *  Detection using Ptrace
  *  : each process in Linux can be run in one process at the same time, APP can preempt the pit with its own ptrace method.
  *
- *   *   return : True (debugger detected)
+ *  return : True (debugger detected)
  *           false ( not detected)
  */
 
@@ -222,7 +222,11 @@ Java_com_example_client_1protect_MainActivity_PtraceCheck(JNIEnv *env, jobject t
 }
 
 
-
+/**
+ * to check BreakPoint, getLibAddr Need!
+ * @param lib
+ * @return lib_address
+ */
 
 unsigned long getLibAddr (const char *lib) {
     puts("Enter getLibAddr");
@@ -247,6 +251,14 @@ unsigned long getLibAddr (const char *lib) {
     return addr;
 }
 
+/**
+ *
+ *  Checking BreakPoint
+ *  : The principle of the debugger is to front the breakpoint assembly instruction at the breakpoint address and back up the original instruction elsewhere. In other words, the method only needs to scan whether there is a breakpoint instruction
+ *
+ *  return : True (debugger detected)
+ *           false ( not detected)
+ */
 extern "C"
 JNIEXPORT jboolean JNICALL
 Java_com_example_client_1protect_MainActivity_BreakPointCheck(JNIEnv *env, jobject thiz) {
