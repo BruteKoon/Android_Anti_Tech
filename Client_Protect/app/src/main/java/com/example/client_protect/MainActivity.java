@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     public native boolean TracerPidCheck();
     public native boolean DebuggingPortCheck();
     public native boolean PtraceCheck();
+    public native boolean BreakPointCheck();
 
     static {
         System.loadLibrary("native-lib");
