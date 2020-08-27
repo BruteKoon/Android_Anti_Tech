@@ -21,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
     public native boolean PtraceCheck();
     public native boolean BreakPointCheck();
     public native boolean MemoryCheck();
+    public native boolean CmdLineCheck();
+
 
     static {
         System.loadLibrary("native-lib");

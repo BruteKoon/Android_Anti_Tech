@@ -342,3 +342,33 @@ Java_com_example_client_1protect_MainActivity_MemoryCheck(JNIEnv *env, jobject t
     fclose(fp);
     return Detected;
 }
+
+
+/**
+ *
+ *  Checking CmdLine for detecint gdb
+ *  : When executed through gdb, it can be determined through this because the process id is gdb.
+ *
+ *  return : True (gdb detected)
+ *           false ( not detected) d
+ */
+extern "C"
+JNIEXPORT jboolean JNICALL
+Java_com_example_client_1protect_MainActivity_CmdLineCheck(JNIEnv *env, jobject thiz) {
+    // TODO: implement CmdLineCheck()
+        char filePath[32], fileRead[128];
+        FILE* file;
+
+        snprintf(filePath, 24, "/proc/%d/cmdline", getppid());
+        file = fopen(filePath, "r");
+
+        fgets(fileRead, 128, file);
+        fclose(file);
+
+        if(!strcmp(fileRead, "gdb")) {
+            __android_log_print(ANDROID_LOG_INFO,"SUKHOON","gdb Detected!!!");
+            return true;
+        }
+        return false;
+    }
+}
