@@ -311,7 +311,7 @@ Java_com_example_client_1protect_MainActivity_BreakPointCheck(JNIEnv *env, jobje
  *  : /proc/self/maps contains a list of libraries and processes attached to the app's memory. Through this, check whether a specific tool is attached
  *
  *  return : True (debugger detected)
- *           false ( not detected)
+ *           false ( not detected) d
  */
 extern "C"
 JNIEXPORT jboolean JNICALL
