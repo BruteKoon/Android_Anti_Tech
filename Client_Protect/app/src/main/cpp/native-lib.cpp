@@ -320,6 +320,8 @@ Java_com_example_client_1protect_MainActivity_MemoryCheck(JNIEnv *env, jobject t
     char lineBuf[256];
     bool Detected = false;
 
+    const char * tools[] = {"frida", "olley"};
+
     snprintf(lineBuf, 256 - 1, "/proc/%d/maps", getpid());
     FILE *fp = fopen(lineBuf, "r");
     if (fp == NULL) {
@@ -328,10 +330,13 @@ Java_com_example_client_1protect_MainActivity_MemoryCheck(JNIEnv *env, jobject t
     }
 
     while (fgets(lineBuf, sizeof(lineBuf), fp)) {
-        if (strstr(lineBuf, "frida")) {
-            Detected = true;
-            break;
+        for (int i = 0; i < sizeof(tools)/sizeof(tools[0]); i++) {
+            if (strstr(lineBuf, tools[i])) {
+                Detected = true;
+                break;
+            }
         }
+
     }
     bail:
     fclose(fp);
