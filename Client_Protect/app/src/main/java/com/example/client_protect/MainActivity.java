@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     public native boolean DebuggingPortCheck();
     public native boolean PtraceCheck();
     public native boolean BreakPointCheck();
+    public native boolean MemoryCheck();
 
     static {
         System.loadLibrary("native-lib");
@@ -43,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 boolean result = checker.Check_For_Hack(null);
-                boolean a = PtraceCheck();
+                boolean a = MemoryCheck();
                 if(a==false){
                     logview.setText("False");
                 }

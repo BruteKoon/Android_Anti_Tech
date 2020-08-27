@@ -303,5 +303,27 @@ Java_com_example_client_1protect_MainActivity_BreakPointCheck(JNIEnv *env, jobje
     return Detected;
 }
 
+extern "C"
+JNIEXPORT jboolean JNICALL
+Java_com_example_client_1protect_MainActivity_MemoryCheck(JNIEnv *env, jobject thiz) {
+    unsigned long addr = 0;
+    char lineBuf[256];
+    bool Detected = false;
 
+    snprintf(lineBuf, 256 - 1, "/proc/%d/maps", getpid());
+    FILE *fp = fopen(lineBuf, "r");
+    if (fp == NULL) {
+        perror("fopen failed");
+        goto bail;
+    }
+
+    while (fgets(lineBuf, sizeof(lineBuf), fp)) {
+        if (strstr(lineBuf, "frida")) {
+            Detected = true;
+            break;
+        }
+    }
+    bail:
+    fclose(fp);
+    return Detected;
 }
