@@ -303,6 +303,16 @@ Java_com_example_client_1protect_MainActivity_BreakPointCheck(JNIEnv *env, jobje
     return Detected;
 }
 
+
+
+/**
+ *
+ *  Checking Memrory Using String Search
+ *  : /proc/self/maps contains a list of libraries and processes attached to the app's memory. Through this, check whether a specific tool is attached
+ *
+ *  return : True (debugger detected)
+ *           false ( not detected)
+ */
 extern "C"
 JNIEXPORT jboolean JNICALL
 Java_com_example_client_1protect_MainActivity_MemoryCheck(JNIEnv *env, jobject thiz) {
