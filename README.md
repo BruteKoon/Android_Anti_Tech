@@ -11,7 +11,7 @@ Java Level's technology has mainly implemented rooting, emulation detection, and
 
 
 
-# Client_Prac / Server_Prac
+## Client_Prac / Server_Prac
 This is a simple example. 
 Client Prac is the code that implemented a simple snake game. Server_prac is a server example for login authentication in Client_Prac, which has nothing to do with using only Cleint_Prac.
 
