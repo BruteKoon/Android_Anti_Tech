@@ -24,6 +24,19 @@ The debugger can be checked through the isDebuggerConnect() function.
 GetInstallerPackageAName allows you to check if the app has been downloaded from an unallowed location.
 
 
+## C/C++ Level Techhniques (native-lib.cpp)
+Using the characteristics of Linux, which manages various information through files, it obtains information from various specific locations and uses it for detection.
+
+### check using /proc/pid/maps, status
+/ proc / pid / maps, status, etc. can be checked the relevant processes when the application is operating. This allows the relevant process to be inferred by name whether it is a debugger or an attack tool.
+
+### Time Check
+Check the time when turning to a specific code. This will make the time difference slower than usual when the debugger is operating together, it is possible to check the presence or absence of the debugger.
+
+### Check USING Ptrace
+each process in Linux can be run in one process at the same time, APP can preempt the pit with its own ptrace method.
+
+
 
 ## Client_Prac / Server_Prac
 This is a simple example. 
